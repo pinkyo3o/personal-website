@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { siteConfig } from '../../data/site';
+
+const lang = getLangFromUrl(Astro.url) as 'zh' | 'en';
+const t = useTranslations(lang);
+const aboutText = siteConfig.about.en;
+const name = siteConfig.name.en;
+const tagline = siteConfig.tagline.en;
+---
+
+<BaseLayout title={`${name} · ${t('about.title')}`} description={aboutText.split('\n')[0]}>
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+    <h1 class="text-4xl font-bold gradient-text mb-2">{t('about.title')}</h1>
+    <p class="text-ink-soft mb-10">{tagline}</p>
+
+    <div class="flex justify-center mb-10">
+      <div class="w-32 h-32 rounded-full bg-gradient-to-br from-coral to-mint flex items-center justify-center text-5xl shadow-xl">
+        😊
+      </div>
+    </div>
+
+    <div class="prose prose-lg max-w-none text-ink leading-relaxed whitespace-pre-line mb-12">
+      {aboutText}
+    </div>
+
+    <div class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">
+        <span class="text-coral">🎨</span> {t('about.skills')}
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        {siteConfig.skills.map((skill) => (
+          <span class="px-4 py-2 rounded-xl bg-white border border-coral/15 text-sm font-medium text-ink hover:border-coral/40 hover:bg-coral/5 transition-all">
+            {skill}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold mb-4">
+        <span class="text-mint">📬</span> {t('about.contact')}
+      </h2>
+      <div class="flex flex-wrap gap-4">
+        {siteConfig.social.github && (
+          <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-ink text-white font-medium hover:bg-coral transition-all">
+            GitHub →
+          </a>
+        )}
+        {siteConfig.social.email && (
+          <a href={siteConfig.social.email} class="px-5 py-2.5 rounded-xl bg-white text-ink font-medium border border-coral/20 hover:border-coral/40 transition-all">
+            Email →
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

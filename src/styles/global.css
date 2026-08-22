@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+
+/* ========================================
+   主题色 — 活泼色彩风
+   修改这里的颜色即可全站换色
+   ======================================== */
+@theme {
+  --color-coral: #ff6b6b;
+  --color-coral-light: #ff8e8e;
+  --color-mint: #4ecdc4;
+  --color-mint-light: #7eddd5;
+  --color-sunshine: #ffe66d;
+  --color-warmwhite: #fff8f0;
+  --color-ink: #2d3436;
+  --color-ink-soft: #636e72;
+
+  --font-sans: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ========================================
+   全局基础样式
+   ======================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-warmwhite);
+  color: var(--color-ink);
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-warmwhite);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-coral);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-coral-light);
+}
+
+/* 链接交互 */
+a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+/* 选中文本颜色 */
+::selection {
+  background-color: var(--color-sunshine);
+  color: var(--color-ink);
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-coral), var(--color-mint));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,52 @@
+---
+// ProjectCard - project card
+import { useTranslations } from '../i18n/utils';
+
+const { project, lang } = Astro.props;
+const t = useTranslations(lang);
+const title = project.title[lang];
+const description = project.description[lang];
+---
+
+<a href={project.link} class="group block" target={project.link.startsWith('http') ? '_blank' : undefined} rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}>
+  <article class="h-full overflow-hidden bg-white rounded-2xl shadow-sm border border-coral/5 hover:shadow-xl hover:border-mint/30 hover:-translate-y-1 transition-all duration-300">
+    {project.image ? (
+      <div class="aspect-video overflow-hidden">
+        <img src={project.image} alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+      </div>
+    ) : (
+      <div class="aspect-video flex items-center justify-center bg-gradient-to-br from-coral via-coral-light to-mint">
+        <span class="text-5xl opacity-30">🚀</span>
+      </div>
+    )}
+
+    <div class="p-6">
+      <h3 class="text-lg font-bold text-ink group-hover:text-coral transition-colors mb-2">
+        {title}
+      </h3>
+
+      <p class="text-sm text-ink-soft line-clamp-3 mb-4">
+        {description}
+      </p>
+
+      {project.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span class="px-2 py-0.5 text-xs font-medium rounded-md bg-warmwhite text-ink-soft border border-coral/10">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  </article>
+</a>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

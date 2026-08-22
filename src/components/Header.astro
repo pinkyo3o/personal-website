@@ -1,0 +1,63 @@
+---
+// Header - nav bar + language switch
+import { getLangFromUrl, useTranslations, switchLangPath } from '../i18n/utils';
+import { siteConfig } from '../data/site';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const path = Astro.url.pathname;
+const isActive = (key: string) => {
+  const segment = `/${lang}/${key}`;
+  return path === segment || path.startsWith(segment + '/');
+};
+
+const navItems = [
+  { key: 'home', href: `/${lang}`, label: t('nav.home'), icon: '🏠' },
+  { key: 'about', href: `/${lang}/about`, label: t('nav.about'), icon: '👋' },
+  { key: 'blog', href: `/${lang}/blog`, label: t('nav.blog'), icon: '✍️' },
+  { key: 'projects', href: `/${lang}/projects`, label: t('nav.projects'), icon: '🚀' },
+];
+
+const langSwitchHref = switchLangPath(Astro.url.pathname, lang === 'zh' ? 'en' : 'zh');
+const displayName = lang === 'zh' ? siteConfig.name.zh : siteConfig.name.en;
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-md bg-warmwhite/80 border-b border-coral/10">
+  <nav class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <!-- Logo / 名字 -->
+    <a href={`/${lang}`} class="text-lg font-bold gradient-text hover:opacity-80 transition-opacity">
+      {displayName}
+    </a>
+
+    <!-- 导航链接 -->
+    <ul class="flex items-center gap-1 sm:gap-2">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              'px-3 py-2 rounded-xl text-sm font-medium transition-all',
+              isActive(item.key)
+                ? 'bg-coral/15 text-coral'
+                : 'text-ink-soft hover:bg-coral/8 hover:text-coral',
+            ]}
+          >
+            <span class="hidden sm:inline">{item.icon}</span>
+            <span class="ml-0.5 sm:ml-1">{item.label}</span>
+          </a>
+        </li>
+      ))}
+
+      <!-- 语言切换 -->
+      <li>
+        <a
+          href={langSwitchHref}
+          class="ml-1 px-3 py-2 rounded-xl text-sm font-bold bg-mint/20 text-mint hover:bg-mint/30 transition-all"
+        >
+          {t('nav.langSwitch')}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

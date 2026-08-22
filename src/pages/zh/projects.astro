@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { projects } from '../../data/projects';
+import { siteConfig } from '../../data/site';
+
+const lang = getLangFromUrl(Astro.url) as 'zh' | 'en';
+const t = useTranslations(lang);
+const name = siteConfig.name.zh;
+---
+
+<BaseLayout title={`${name} · ${t('projects.title')}`} description={t('projects.subtitle')}>
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-16">
+    <!-- 标题 -->
+    <div class="mb-10">
+      <h1 class="text-4xl font-bold gradient-text mb-2">
+        <span>🚀</span> {t('projects.title')}
+      </h1>
+      <p class="text-ink-soft">{t('projects.subtitle')}</p>
+    </div>
+
+    <!-- 项目网格 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => <ProjectCard project={project} lang={lang} />)}
+    </div>
+  </section>
+</BaseLayout>
