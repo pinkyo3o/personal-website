@@ -11,8 +11,8 @@ export const siteConfig = {
 
   // 一句话简介（显示在首页 Hero 区）
   tagline: {
-    zh: '用代码和创意连接世界 ✨',
-    en: 'Connecting the world with code & creativity ✨',
+    zh: 'Coming up roses🌷',
+    en: 'Coming up roses🌷',
   },
 
   // 关于我的详细介绍（支持多段文字，用 \n\n 分段）
