@@ -15,7 +15,7 @@ const socials = [
 ].filter((s) => s.href !== '');
 ---
 
-<footer class="mt-20 border-t border-coral/10 bg-warmwhite">
+<footer class="mt-20 border-t border-primary/15 bg-warmwhite">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
     <!-- 社交链接 -->
     <div class="flex flex-wrap items-center justify-center gap-4 mb-6">
@@ -24,7 +24,7 @@ const socials = [
           href={s.href}
           target={s.href.startsWith('http') ? '_blank' : undefined}
           rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-          class="w-10 h-10 flex items-center justify-center rounded-full bg-coral/10 text-coral hover:bg-coral hover:text-white transition-all"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all"
           aria-label={s.label}
           title={s.label}
         >

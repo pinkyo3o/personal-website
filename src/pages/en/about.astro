@@ -16,8 +16,8 @@ const tagline = siteConfig.tagline.en;
     <p class="text-ink-soft mb-10">{tagline}</p>
 
     <div class="flex justify-center mb-10">
-      <div class="w-32 h-32 rounded-full bg-gradient-to-br from-coral to-mint flex items-center justify-center text-5xl shadow-xl">
-        😊
+      <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-5xl shadow-xl">
+        🐱
       </div>
     </div>
 
@@ -27,11 +27,11 @@ const tagline = siteConfig.tagline.en;
 
     <div class="mb-12">
       <h2 class="text-2xl font-bold mb-4">
-        <span class="text-coral">🎨</span> {t('about.skills')}
+        <span class="text-primary">🔔</span> {t('about.skills')}
       </h2>
       <div class="flex flex-wrap gap-3">
         {siteConfig.skills.map((skill) => (
-          <span class="px-4 py-2 rounded-xl bg-white border border-coral/15 text-sm font-medium text-ink hover:border-coral/40 hover:bg-coral/5 transition-all">
+          <span class="px-4 py-2 rounded-xl bg-white border border-primary/15 text-sm font-medium text-ink hover:border-primary/40 hover:bg-primary/5 transition-all">
             {skill}
           </span>
         ))}
@@ -40,16 +40,16 @@ const tagline = siteConfig.tagline.en;
 
     <div>
       <h2 class="text-2xl font-bold mb-4">
-        <span class="text-mint">📬</span> {t('about.contact')}
+        <span class="text-accent">🐚</span> {t('about.contact')}
       </h2>
       <div class="flex flex-wrap gap-4">
         {siteConfig.social.github && (
-          <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-ink text-white font-medium hover:bg-coral transition-all">
+          <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-ink text-white font-medium hover:bg-primary transition-all">
             GitHub →
           </a>
         )}
         {siteConfig.social.email && (
-          <a href={siteConfig.social.email} class="px-5 py-2.5 rounded-xl bg-white text-ink font-medium border border-coral/20 hover:border-coral/40 transition-all">
+          <a href={siteConfig.social.email} class="px-5 py-2.5 rounded-xl bg-white text-ink font-medium border border-primary/20 hover:border-primary/40 transition-all">
             Email →
           </a>
         )}

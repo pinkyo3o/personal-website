@@ -22,11 +22,15 @@ const tagline = siteConfig.tagline.en;
 <BaseLayout title={`${name} · ${tagline}`} description={tagline}>
   <!-- Hero Section -->
   <section class="relative overflow-hidden">
-    <div class="absolute top-10 left-10 w-72 h-72 bg-coral/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 right-10 w-96 h-96 bg-mint/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-10 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+    <!-- Scattered bellflowers and waves -->
+    <div class="absolute top-20 right-20 text-3xl animate-sway opacity-60 hidden sm:block">🔔</div>
+    <div class="absolute bottom-32 left-16 text-2xl animate-float opacity-50 hidden sm:block">🌊</div>
 
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-32 text-center">
-      <div class="text-6xl mb-6 animate-float">👋</div>
+      <!-- Floating white cat -->
+      <div class="text-7xl mb-6 animate-float">🐱</div>
 
       <p class="text-lg text-ink-soft mb-2">{t('home.greeting')}</p>
 
@@ -43,14 +47,14 @@ const tagline = siteConfig.tagline.en;
       </p>
 
       <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="/en/blog" class="px-6 py-3 rounded-2xl bg-coral text-white font-semibold shadow-lg shadow-coral/30 hover:shadow-xl hover:shadow-coral/40 hover:-translate-y-0.5 transition-all">
-          ✍️ {t('nav.blog')}
+        <a href="/en/blog" class="px-6 py-3 rounded-2xl bg-primary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all">
+          📝 {t('nav.blog')}
         </a>
-        <a href="/en/projects" class="px-6 py-3 rounded-2xl bg-mint text-white font-semibold shadow-lg shadow-mint/30 hover:shadow-xl hover:shadow-mint/40 hover:-translate-y-0.5 transition-all">
-          🚀 {t('nav.projects')}
+        <a href="/en/projects" class="px-6 py-3 rounded-2xl bg-accent text-white font-semibold shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-0.5 transition-all">
+          🌊 {t('nav.projects')}
         </a>
-        <a href="/en/about" class="px-6 py-3 rounded-2xl bg-white text-ink font-semibold border border-coral/20 shadow-sm hover:border-coral/40 hover:-translate-y-0.5 transition-all">
-          👋 {t('nav.about')}
+        <a href="/en/about" class="px-6 py-3 rounded-2xl bg-white text-ink font-semibold border border-primary/20 shadow-sm hover:border-primary/40 hover:-translate-y-0.5 transition-all">
+          🐾 {t('nav.about')}
         </a>
       </div>
     </div>
@@ -61,9 +65,9 @@ const tagline = siteConfig.tagline.en;
     <section class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
       <div class="flex items-center justify-between mb-8">
         <h2 class="text-3xl font-bold">
-          <span class="text-coral">📝</span> {t('home.latestPosts')}
+          <span class="text-primary">🔔</span> {t('home.latestPosts')}
         </h2>
-        <a href="/en/blog" class="text-sm font-medium text-mint hover:text-coral transition-colors">
+        <a href="/en/blog" class="text-sm font-medium text-accent hover:text-primary transition-colors">
           {t('home.viewAll')} →
         </a>
       </div>
@@ -78,9 +82,9 @@ const tagline = siteConfig.tagline.en;
     <section class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
       <div class="flex items-center justify-between mb-8">
         <h2 class="text-3xl font-bold">
-          <span class="text-mint">🚀</span> {t('home.featuredProjects')}
+          <span class="text-accent">🌊</span> {t('home.featuredProjects')}
         </h2>
-        <a href="/en/projects" class="text-sm font-medium text-mint hover:text-coral transition-colors">
+        <a href="/en/projects" class="text-sm font-medium text-accent hover:text-primary transition-colors">
           {t('home.viewAll')} →
         </a>
       </div>
@@ -92,17 +96,18 @@ const tagline = siteConfig.tagline.en;
 
   <!-- Connect Section -->
   <section class="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-    <div class="text-center p-10 rounded-3xl bg-gradient-to-br from-coral/10 via-sunshine/10 to-mint/10 border border-coral/10">
+    <div class="text-center p-10 rounded-3xl bg-gradient-to-br from-primary/10 via-bellflower/10 to-accent/10 border border-primary/10">
+      <div class="text-4xl mb-4">🐱 🐚 🌊</div>
       <h2 class="text-2xl font-bold mb-4">{t('home.connectWithMe')}</h2>
-      <p class="text-ink-soft mb-6">👋 {siteConfig.about.en.split('\n')[0]}</p>
+      <p class="text-ink-soft mb-6">🐾 {siteConfig.about.en.split('\n')[0]}</p>
       <div class="flex flex-wrap items-center justify-center gap-4">
         {siteConfig.social.github && (
-          <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-ink text-white font-medium hover:bg-coral transition-all">
+          <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-ink text-white font-medium hover:bg-primary transition-all">
             GitHub
           </a>
         )}
         {siteConfig.social.email && (
-          <a href={siteConfig.social.email} class="px-5 py-2.5 rounded-xl bg-white text-ink font-medium border border-coral/20 hover:border-coral/40 transition-all">
+          <a href={siteConfig.social.email} class="px-5 py-2.5 rounded-xl bg-white text-ink font-medium border border-primary/20 hover:border-primary/40 transition-all">
             Email
           </a>
         )}

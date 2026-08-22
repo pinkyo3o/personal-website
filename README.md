@@ -90,10 +90,10 @@ lang: 'zh'
 
 ```css
 @theme {
-  --color-coral: #ff6b6b;       /* 主色 */
-  --color-mint: #4ecdc4;        /* 辅色 */
-  --color-sunshine: #ffe66d;    /* 点缀色 */
-  --color-warmwhite: #fff8f0;   /* 背景色 */
+  --color-primary: #f9a8c9;       /* 樱花粉 — 主色 */
+  --color-accent: #8ecae6;        /* 天空蓝 — 辅色 */
+  --color-bellflower: #a8c8ec;   /* 风铃花蓝 */
+  --color-warmwhite: #fefcfd;     /* 奶油白 — 背景色 */
 }
 ```
 
