@@ -3,10 +3,10 @@
  * 这是你最常需要改的文件：名字、简介、社交链接等
  */
 export const siteConfig = {
-  // 你的名字（中英文）
+  // Pinkyo3o
   name: {
-    zh: '你的名字',
-    en: 'Your Name',
+    zh: 'Pinkyo3o',
+    en: 'Pinkyo3o',
   },
 
   // 一句话简介（显示在首页 Hero 区）
