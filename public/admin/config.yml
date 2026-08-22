@@ -1,0 +1,98 @@
+backend:
+  name: github
+  repo: pinkyo3o/personal-website
+  branch: main
+  auth_type: oauth
+  app_id: Ov23liyoKU4JPzBtqB8q
+
+# 图片上传目录
+media_folder: "public/images"
+public_folder: "/personal-website/images"
+
+# 发布模式：直接提交到 main 分支
+publish_mode: simple
+
+# 后台界面语言
+locale: 'zh_Hans'
+
+collections:
+  # ========================================
+  # 中文博客文章
+  # ========================================
+  - name: "blog_zh"
+    label: "📝 中文博客"
+    folder: "src/content/blog/zh"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "摘要", name: "description", widget: "string" }
+      - { label: "发布日期", name: "pubDate", widget: "datetime" }
+      - { label: "更新日期", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "标签", name: "tags", widget: "list", required: false }
+      - { label: "语言", name: "lang", widget: "select", options: ["zh"], default: "zh" }
+      - { label: "草稿", name: "draft", widget: "boolean", default: false }
+      - { label: "封面图", name: "heroImage", widget: "image", required: false }
+      - { label: "正文", name: "body", widget: "markdown" }
+
+  # ========================================
+  # 英文博客文章
+  # ========================================
+  - name: "blog_en"
+    label: "📝 English Blog"
+    folder: "src/content/blog/en"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime" }
+      - { label: "Updated Date", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Language", name: "lang", widget: "select", options: ["en"], default: "en" }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ========================================
+  # 站点信息
+  # ========================================
+  - name: "site_config"
+    label: "⚙️ 站点信息"
+    files:
+      - label: "基本信息"
+        name: "site_info"
+        file: "src/data/site.ts"
+        fields:
+          - { label: "中文名字", name: "name_zh", widget: "string", hint: "在 site.ts 中对应的 name.zh" }
+          - { label: "英文名字", name: "name_en", widget: "string" }
+          - { label: "中文标语", name: "tagline_zh", widget: "string" }
+          - { label: "英文标语", name: "tagline_en", widget: "string" }
+          - { label: "中文简介", name: "about_zh", widget: "text" }
+          - { label: "英文简介", name: "about_en", widget: "text" }
+          - { label: "GitHub 链接", name: "social_github", widget: "string" }
+          - { label: "邮箱", name: "social_email", widget: "string" }
+          - { label: "Twitter", name: "social_twitter", widget: "string", required: false }
+          - { label: "LinkedIn", name: "social_linkedin", widget: "string", required: false }
+          - { label: "Instagram", name: "social_instagram", widget: "string", required: false }
+
+      - label: "项目展示"
+        name: "projects"
+        file: "src/data/projects.ts"
+        fields:
+          - label: "项目列表"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "中文标题", name: "title_zh", widget: "string" }
+              - { label: "英文标题", name: "title_en", widget: "string" }
+              - { label: "中文描述", name: "description_zh", widget: "text" }
+              - { label: "英文描述", name: "description_en", widget: "text" }
+              - { label: "标签", name: "tags", widget: "list", required: false }
+              - { label: "图片", name: "image", widget: "image", required: false }
+              - { label: "链接", name: "link", widget: "string", default: "#" }
+              - { label: "精选", name: "featured", widget: "boolean", default: true }
