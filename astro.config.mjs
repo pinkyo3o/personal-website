@@ -5,7 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://your-website.vercel.app', // ← 部署后改成你的实际域名
+  site: 'https://pinkyo3o.github.io',
+  base: '/personal-website/',
   i18n: {
     defaultLocale: 'zh',
     locales: ['zh', 'en'],
