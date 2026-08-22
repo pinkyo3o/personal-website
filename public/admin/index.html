@@ -8,10 +8,13 @@
   <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 </head>
 <body>
+  <div id="loading" style="text-align:center;padding:40px;font-family:sans-serif;color:#94a3b8;">
+    正在加载后台... 如果长时间无响应，请检查网络。
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.6.4/dist/decap-cms.js"></script>
   <script>
-    // 告诉 Decap CMS 配置文件的正确路径（适配 GitHub Pages 子路径）
-    window.CMS_CONFIG = '/personal-website/admin/config.yml';
+    // 加载完成后隐藏 loading
+    document.getElementById('loading').style.display = 'none';
   </script>
-  <script src="https://unpkg.com/decap-cms@^3.6.4/dist/decap-cms.js"></script>
 </body>
 </html>
