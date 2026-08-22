@@ -6,8 +6,11 @@ import { ui, type Language, type UIKey, defaultLang } from './ui';
 
 /** 从 URL 路径中提取语言代码，如 /zh/blog → zh，/en/about → en */
 export function getLangFromUrl(url: URL): Language {
-  const [, lang] = url.pathname.split('/');
-  if (lang in ui) return lang as Language;
+  const segments = url.pathname.split('/').filter(Boolean);
+  // 跳过 base 路径段（如 personal-website），找语言段
+  for (const seg of segments) {
+    if (seg in ui) return seg as Language;
+  }
   return defaultLang;
 }
 
@@ -19,20 +22,27 @@ export function useTranslations(lang: Language) {
   };
 }
 
-/** 获取指定语言对应的路径前缀，如 zh → /zh，en → /en */
+/** 获取指定语言对应的路径前缀，考虑 base 路径 */
 export function langPrefix(lang: Language): string {
-  return `/${lang}`;
+  const base = import.meta.env.BASE_URL;
+  return `${base}${lang}`;
 }
 
 /** 将路径切换到另一种语言，如 /zh/blog → /en/blog */
 export function switchLangPath(pathname: string, targetLang: Language): string {
-  const parts = pathname.split('/').filter(Boolean);
-  if (parts.length > 0 && parts[0] in ui) {
-    parts[0] = targetLang;
+  const base = import.meta.env.BASE_URL;
+  const segments = pathname.split('/').filter(Boolean);
+
+  // 去掉 base 路径段
+  const baseSeg = base.split('/').filter(Boolean)[0];
+  const filtered = baseSeg ? segments.filter((s, i) => !(i === 0 && s === baseSeg)) : segments;
+
+  if (filtered.length > 0 && filtered[0] in ui) {
+    filtered[0] = targetLang;
   } else {
-    parts.unshift(targetLang);
+    filtered.unshift(targetLang);
   }
-  return '/' + parts.join('/');
+  return '/' + (baseSeg ? baseSeg + '/' : '') + filtered.join('/');
 }
 
 /** 根据语言获取日期格式化器 */
@@ -43,4 +53,12 @@ export function formatDate(date: Date, lang: Language): string {
     month: 'long',
     day: 'numeric',
   }).format(date);
+}
+
+/** 构建内部链接，自动加上 base 路径 */
+export function path(p: string): string {
+  const base = import.meta.env.BASE_URL;
+  const cleanBase = base.endsWith('/') ? base : base + '/';
+  const cleanPath = p.startsWith('/') ? p.slice(1) : p;
+  return cleanBase + cleanPath;
 }

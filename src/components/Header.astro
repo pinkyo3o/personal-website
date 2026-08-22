@@ -1,22 +1,22 @@
 ---
 // Header - nav bar + language switch
-import { getLangFromUrl, useTranslations, switchLangPath } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, switchLangPath, langPrefix } from '../i18n/utils';
 import { siteConfig } from '../data/site';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const path = Astro.url.pathname;
+const currentPath = Astro.url.pathname;
 const isActive = (key) => {
-  const segment = `/${lang}/${key}`;
-  return path === segment || path.startsWith(segment + '/');
+  const segment = `${langPrefix(lang)}/${key}`;
+  return currentPath === segment || currentPath.startsWith(segment + '/');
 };
 
 const navItems = [
-  { key: 'home', href: `/${lang}`, label: t('nav.home'), icon: '🐱' },
-  { key: 'about', href: `/${lang}/about`, label: t('nav.about'), icon: '🌷' },
-  { key: 'blog', href: `/${lang}/blog`, label: t('nav.blog'), icon: '✍️' },
-  { key: 'projects', href: `/${lang}/projects`, label: t('nav.projects'), icon: '🌊' },
+  { key: 'home', href: langPrefix(lang), label: t('nav.home'), icon: '🐱' },
+  { key: 'about', href: `${langPrefix(lang)}/about`, label: t('nav.about'), icon: '🌷' },
+  { key: 'blog', href: `${langPrefix(lang)}/blog`, label: t('nav.blog'), icon: '✍️' },
+  { key: 'projects', href: `${langPrefix(lang)}/projects`, label: t('nav.projects'), icon: '🌊' },
 ];
 
 const langSwitchHref = switchLangPath(Astro.url.pathname, lang === 'zh' ? 'en' : 'zh');
@@ -26,7 +26,7 @@ const displayName = lang === 'zh' ? siteConfig.name.zh : siteConfig.name.en;
 <header class="sticky top-0 z-50 backdrop-blur-md bg-warmwhite/80 border-b border-primary/15">
   <nav class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
     <!-- Logo / 名字 -->
-    <a href={`/${lang}`} class="text-lg font-bold gradient-text hover:opacity-80 transition-opacity">
+    <a href={langPrefix(lang)} class="text-lg font-bold gradient-text hover:opacity-80 transition-opacity">
       🐱 {displayName}
     </a>
 

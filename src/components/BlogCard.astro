@@ -1,13 +1,13 @@
 ---
 // BlogCard - blog post card
-import { useTranslations, formatDate } from '../i18n/utils';
+import { useTranslations, formatDate, langPrefix } from '../i18n/utils';
 
 const { post, lang } = Astro.props;
 const t = useTranslations(lang);
 const { title, description, pubDate, tags } = post.data;
 
 const rawId = post.id.replace(/^(zh|en)\//, '');
-const href = `/${lang}/blog/${rawId}`;
+const href = `${langPrefix(lang)}/blog/${rawId}`;
 ---
 
 <a href={href} class="group block">

@@ -1,4 +1,6 @@
 ---
 // Root entry - redirect to default language /zh
-return Astro.redirect('/zh');
+// Use import.meta.env.BASE_URL to support GitHub Pages subpath
+const base = import.meta.env.BASE_URL;
+return Astro.redirect(`${base}zh`);
 ---
