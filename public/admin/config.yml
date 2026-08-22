@@ -4,6 +4,8 @@ backend:
   branch: main
   auth_type: oauth
   app_id: Ov23liyoKU4JPzBtqB8q
+  base_url: https://decap-oauth.850339551.workers.dev
+  auth_endpoint: /auth
 
 # 图片上传目录
 media_folder: "public/images"
