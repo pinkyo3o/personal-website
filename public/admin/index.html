@@ -6,12 +6,23 @@
   <meta name="robots" content="noindex" />
   <title>管理后台</title>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-  <base href="/personal-website/admin/" />
 </head>
 <body>
   <div id="loading" style="text-align:center;padding:40px;font-family:sans-serif;color:#94a3b8;">
     正在加载后台... 如果长时间无响应，请检查网络。
   </div>
+  <script>
+    // 确保 config.yml 从正确路径加载
+    var configUrl = '/personal-website/admin/config.yml';
+    // 拦截 fetch 请求，把 config.yml 请求重定向到正确路径
+    var originalFetch = window.fetch;
+    window.fetch = function(url, options) {
+      if (url === 'config.yml' || url === './config.yml') {
+        url = configUrl;
+      }
+      return originalFetch.call(this, url, options);
+    };
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.6.4/dist/decap-cms.js"></script>
   <script>
     document.getElementById('loading').style.display = 'none';
