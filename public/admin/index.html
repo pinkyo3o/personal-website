@@ -12,12 +12,10 @@
     正在加载后台... 如果长时间无响应，请检查网络。
   </div>
   <script>
-    // 手动初始化模式
     window.CMS_MANUAL_INIT = true;
   </script>
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.6.4/dist/decap-cms.js"></script>
   <script>
-    // 使用正确的 CMS API 初始化
     var CMS = window.CMS || window.DecapCms;
     if (CMS && CMS.init) {
       CMS.init({
@@ -37,7 +35,7 @@
           locale: 'zh_Hans',
           collections: [
             {
-              name: 'blog_zh',
+              name: 'zh',
               label: '📝 中文博客',
               folder: 'src/content/blog/zh',
               create: true,
@@ -56,7 +54,7 @@
               ]
             },
             {
-              name: 'blog_en',
+              name: 'en',
               label: '📝 English Blog',
               folder: 'src/content/blog/en',
               create: true,
