@@ -12,14 +12,15 @@
     正在加载后台... 如果长时间无响应，请检查网络。
   </div>
   <script>
-    // 内嵌 CMS 配置，避免子路径 config.yml 加载问题
+    // 手动初始化模式
     window.CMS_MANUAL_INIT = true;
   </script>
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.6.4/dist/decap-cms.js"></script>
   <script>
-    // 初始化 CMS，内嵌配置
-    if (window.decapCMS) {
-      window.decapCMS.init({
+    // 使用正确的 CMS API 初始化
+    var CMS = window.CMS || window.DecapCms;
+    if (CMS && CMS.init) {
+      CMS.init({
         config: {
           backend: {
             name: 'github',
